@@ -1,22 +1,24 @@
+const { Types } = require("mongoose");
+
 module.exports = mongoose => {
     var schema = mongoose.Schema(
       {
-        source: {
-            type: String, 
-            required:  true
-          },
-        account: {
-            type: String, 
-            required: true
+        accountId:{
+            type: Types.ObjectId
         },
-        balanceVND:{
+        amountVND:{
             type: Number
         },
-        balanceUSD:{
+        amountUSD:{
             type: Number
         },
-        total:{
-            type: Number
+        reason: {
+          type: String, 
+          required: true
+        },
+        type: {
+          type: String,
+          required: true
         }
       },
       { timestamps: true }
@@ -28,7 +30,7 @@ module.exports = mongoose => {
       return object;
     });
   
-    const monthstart = mongoose.model("monthstart", schema);
-    return monthstart;
+    const transaction = mongoose.model("transaction", schema);
+    return transaction;
   };
   
