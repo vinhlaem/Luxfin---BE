@@ -14,10 +14,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
-
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Luxfin application." });
 });
